@@ -1,4 +1,14 @@
-<button (click)="decrement()" [disabled]="disableButton()">-</button>
-<span>{{current}}</span>
-<button (click)="increment()">+</button>
-
+<button
+  class="btn btn-primary"
+  (click)="decrement()"
+  [disabled]="(loggedIn$ | async) === false"
+>
+  -
+</button>
+<span>{{ current }}</span>
+<button
+  class="btn btn-primary"
+  (click)="increment()"
+>
+  +
+</button>

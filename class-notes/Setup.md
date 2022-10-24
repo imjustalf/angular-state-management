@@ -14,6 +14,12 @@ ng add @angular-eslint/schematics
 
 The config Jeff uses
 
+```shell
+npm i -D prettier
+```
+
+In your `./prettierrc` or `./prettierrc.json` add the following.
+
 ```json
 {
   "plugins": ["./node_modules/prettier-plugin-multiline-arrays"],
@@ -22,4 +28,10 @@ The config Jeff uses
   "trailingComma": "all",
   "arrowParens": "always"
 }
+```
+
+For the multi-line-arrays plugin:
+
+```shell
+npm i -D prettier-plugin-multiline-arrays
 ```
