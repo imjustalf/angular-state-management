@@ -1,0 +1,14 @@
+Angular state management
+--------------------------------
+
+remote password
+ProgressiveITURocks!
+
+github token
+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s
+https://github.com/imjustalf/angular-state-management
+https://github.com/hypertheory-angular/angular-state-management-oct-2022
+
+
+ng new angular-state-management
+
