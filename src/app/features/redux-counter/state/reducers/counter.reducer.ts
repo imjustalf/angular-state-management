@@ -25,8 +25,5 @@ export const reducer = createReducer(
     ...s,
     current: s.current - 1,
   })),
-  on(CounterComponentEvents.reset, (s) => ({
-    ...s,
-    current: 0,
-  })),
+  on(CounterComponentEvents.reset, (s) => initialState),
 );

@@ -3,6 +3,7 @@ import {
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
+import { CounterModel } from '../model';
 import * as fromCounter from './reducers/counter.reducer';
 export const FEATURE_NAME = 'reduxCounter';
 
@@ -23,9 +24,26 @@ const selectCounterBranch = createSelector(selectFeature, (f) => f.counter);
 
 // 3. Helpers (optional)
 
-// 4. We need a thing for our actual component.
-
-export const selectCounterCurrent = createSelector(
+const selectCounterCurrent = createSelector(
   selectCounterBranch,
   (b) => b.current,
+);
+
+const selectCounterAtInitialState = createSelector(
+  selectCounterCurrent,
+  (c) => c === 0,
+);
+
+// 4. We need a thing for our actual component.
+
+export const selectCounterModel = createSelector(
+  selectCounterCurrent,
+  selectCounterAtInitialState,
+  (current, atBeginning) => {
+    let model: CounterModel = {
+      current,
+      atBeginning,
+    };
+    return model;
+  },
 );
