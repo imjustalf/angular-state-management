@@ -12,7 +12,7 @@ https://github.com/hypertheory-angular/angular-state-management-oct-2022
 
 ng new angular-state-management
 
-
-
-
 https://github.com/hypertheory-angular/angular-state-management-oct-2022/blob/master/class-notes/getting-jeffs-code.md
+
+
+In redux state is global and read only.

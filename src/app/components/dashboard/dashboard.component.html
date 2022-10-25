@@ -1,4 +1,4 @@
-<app-alert
+<!-- <app-alert
   *ngFor="let alert of alertsToShow"
   [message]="alert.message"
   [alert]="alert.alert"
@@ -8,4 +8,16 @@
 
 <div>
   <app-alert [message]="thing"></app-alert>
+</div> -->
+
+<div>
+  <app-alert
+    [message]="thing"
+    alert="danger"
+    [dismissable]="true"
+  ></app-alert>
+</div>
+
+<div *appTimedRemove="10">
+  <app-alert message="Can you see this"></app-alert>
 </div>

@@ -13,6 +13,13 @@ const routes: Routes = [
     component: DumbCounterComponent,
   },
   {
+    path: 'redux-counter',
+    loadChildren: () =>
+      import('./features/redux-counter/redux-counter.module').then(
+        (m) => m.ReduxCounterModule,
+      ),
+  },
+  {
     path: '**',
     redirectTo: 'dashboard',
   },
