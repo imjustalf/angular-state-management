@@ -5,13 +5,19 @@ import { ReduxCounterRoutingModule } from './redux-counter-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { FEATURE_NAME, reducers } from './state';
 import { CountByComponent } from './components/count-by/count-by.component';
+import { CountereEffects } from './state/effects/counter.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  declarations: [ReduxCounterComponent, CountByComponent],
+  declarations: [
+    ReduxCounterComponent,
+    CountByComponent,
+  ],
   imports: [
     CommonModule,
     ReduxCounterRoutingModule,
     StoreModule.forFeature(FEATURE_NAME, reducers),
+    EffectsModule.forFeature([CountereEffects]),
   ],
 })
 export class ReduxCounterModule {}

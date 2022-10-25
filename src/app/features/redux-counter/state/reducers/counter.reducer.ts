@@ -1,5 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { CounterComponentEvents } from '../actions/counter.actions';
+import {
+  CounterComponentDocuments,
+  CounterComponentEvents,
+} from '../actions/counter.actions';
 
 // describe state for typescript
 export interface CounterState {
@@ -16,10 +19,9 @@ const initialState: CounterState = {
 
 export const reducer = createReducer(
   initialState,
-  on(CounterComponentEvents.by, (currentState, a) => ({
-    ...currentState,
-    by: a.by,
-  })),
+  on(CounterComponentDocuments.state, (_, a) => a.payload),
+  on(CounterComponentEvents.by, (s, a) => ({ ...s, by: a.by })),
+  on(CounterComponentEvents.reset, (_) => initialState),
   on(
     CounterComponentEvents.incremented,
     (currentState: CounterState): CounterState => ({
@@ -31,5 +33,4 @@ export const reducer = createReducer(
     ...currentState,
     current: currentState.current - currentState.by,
   })),
-  on(CounterComponentEvents.reset, (s) => initialState),
 );
