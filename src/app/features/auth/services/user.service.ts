@@ -14,7 +14,6 @@ export class UserService {
   getUser(): Observable<UserInfo | null> {
     return this.userSubject.asObservable();
   }
-
   logIn() {
     // this will start the OIDC flow to get the user logged in.
     this.user = {

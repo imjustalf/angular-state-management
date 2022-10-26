@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectCounterModel } from './state';
 import { CounterComponentEvents } from './state/actions/counter.actions';
@@ -10,19 +10,22 @@ import { CounterComponentEvents } from './state/actions/counter.actions';
 })
 export class ReduxCounterComponent {
   model$ = this.store.select(selectCounterModel);
+
   constructor(private readonly store: Store) {
-    this.store.dispatch(CounterComponentEvents.entered());
+    store.dispatch(CounterComponentEvents.entered());
   }
 
   increment() {
-    //tell the store what happened
+    // an interaction happens, dispatch an action to the store
     this.store.dispatch(CounterComponentEvents.incremented());
+    // tell the store what happened.
+    // on the counter, in the the redux counter, the user incremented
   }
 
   decrement() {
     this.store.dispatch(CounterComponentEvents.decremented());
+    // // on the counter, in the the redux counter, the user decremented
   }
-
   reset() {
     this.store.dispatch(CounterComponentEvents.reset());
   }

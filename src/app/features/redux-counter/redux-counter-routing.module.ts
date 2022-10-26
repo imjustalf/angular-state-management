@@ -5,10 +5,12 @@ import { ReduxCounterComponent } from './redux-counter.component';
 
 const routes: Routes = [
   {
+    // redux-counter
     path: '',
     component: ReduxCounterComponent,
     children: [
       {
+        // redux-counter/prefs
         path: 'prefs',
         component: CountByComponent,
       },

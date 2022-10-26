@@ -5,11 +5,7 @@
   [dismissable]="alert.dismissable"
   (dismissed)="theyDismissed($event)"
 ></app-alert>
-
-<div>
-  <app-alert [message]="thing"></app-alert>
-</div> -->
-
+-->
 <div>
   <app-alert
     [message]="thing"
@@ -18,6 +14,7 @@
   ></app-alert>
 </div>
 
-<div *appTimedRemove="10">
-  <app-alert message="Can you see this"></app-alert>
+<div *appTimedRemove="3">
+  <h1>This will go away soon!</h1>
+  <app-alert message="Can You See This"></app-alert>
 </div>

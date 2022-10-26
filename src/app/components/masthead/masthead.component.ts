@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import {
   selectIsUserLoggedIn,
   selectLoggedInUserName,
-} from 'src/app/features/auth/states';
-import { AuthEvents } from 'src/app/features/auth/states/actions/auth.actions';
+} from 'src/app/features/auth/state';
+import { AuthEvents } from 'src/app/features/auth/state/actions/auth.actions';
 
 @Component({
   selector: 'app-masthead',
@@ -12,9 +12,8 @@ import { AuthEvents } from 'src/app/features/auth/states/actions/auth.actions';
   styleUrls: ['./masthead.component.css'],
 })
 export class MastheadComponent {
-  userName$ = this.store.select(selectLoggedInUserName);
   isLoggedIn$ = this.store.select(selectIsUserLoggedIn);
-
+  userName$ = this.store.select(selectLoggedInUserName);
   constructor(private readonly store: Store) {}
 
   logIn() {

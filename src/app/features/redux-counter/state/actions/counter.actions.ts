@@ -1,8 +1,8 @@
-import { createActionGroup, props, emptyProps } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { CounterState } from '../reducers/counter.reducer';
 
-//these are the things the components tell us about.
-// they are things tht happened to a particular component.
+// these are things the components tell us about.
+// they are things that happened to a particular component.
 
 export const CounterComponentEvents = createActionGroup({
   source: 'Counter CounterComponent Events',
@@ -20,6 +20,7 @@ export const CounterComponentCommands = createActionGroup({
   events: {},
 });
 
+// actions that have state specifically for your reducer
 export const CounterComponentDocuments = createActionGroup({
   source: 'Counter CounterComponent Documents',
   events: {

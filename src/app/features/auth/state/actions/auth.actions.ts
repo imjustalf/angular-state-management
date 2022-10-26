@@ -1,5 +1,5 @@
 import { createActionGroup, props, emptyProps } from '@ngrx/store';
-import { UserState } from '../reducer/user.reducer';
+import { UserState } from '../reducers/user.reducer';
 
 export const AuthEvents = createActionGroup({
   source: 'Login Auth Events',

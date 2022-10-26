@@ -3,8 +3,8 @@ import {
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
-import { selectIsUserLoggedIn } from '../../auth/states';
-import { CounterModel } from '../model';
+import { selectIsUserLoggedIn } from '../../auth/state';
+import { CounterModel } from '../models';
 import * as fromCounter from './reducers/counter.reducer';
 export const FEATURE_NAME = 'reduxCounter';
 
@@ -17,13 +17,20 @@ export const reducers: ActionReducerMap<ReduxCounterState> = {
   counter: fromCounter.reducer,
 };
 
+// Selectors are functions that return a "slice" of the application state as an Observable.
+// 1. Create a Feature Selector
+
 const selectFeature = createFeatureSelector<ReduxCounterState>(FEATURE_NAME);
 
 // 2. Create a selector from the feature selector for each "branch" of the state.
 
 export const selectCounterBranch = createSelector(
   selectFeature,
-  (f) => f.counter,
+
+  (f) => {
+    console.log('In the selectCounterBranch selector function');
+    return f.counter;
+  },
 );
 
 // 3. Helpers (optional)
@@ -50,6 +57,7 @@ export const selectCounterModel = createSelector(
   selectCounterAtInitialState,
   selectIsUserLoggedIn,
   (current, atBeginning, isLoggedIn) => {
+    console.log('In the selectCounterModel selector');
     let model: CounterModel = {
       current,
       atBeginning,
