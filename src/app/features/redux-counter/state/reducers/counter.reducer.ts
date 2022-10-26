@@ -22,15 +22,19 @@ export const reducer = createReducer(
   on(CounterComponentDocuments.state, (_, a) => a.payload),
   on(CounterComponentEvents.by, (s, a) => ({ ...s, by: a.by })),
   on(CounterComponentEvents.reset, (_) => initialState),
-  on(
-    CounterComponentEvents.incremented,
-    (currentState: CounterState): CounterState => ({
-      ...currentState,
-      current: currentState.current + currentState.by,
-    }),
-  ),
+  on(CounterComponentEvents.incremented, incrementState),
   on(CounterComponentEvents.decremented, (currentState) => ({
     ...currentState,
     current: currentState.current - currentState.by,
   })),
 );
+
+function incrementState(
+  currentState: CounterState,
+  action: unknown,
+): CounterState {
+  // NOT allowed to reach outside of it's scope.
+  // can't CHANGE something outside of it's scope.
+  // calling apis, writing to localstorage, relying the clock.
+  return { ...currentState, current: currentState.current + currentState.by };
+}

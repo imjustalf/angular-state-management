@@ -1,6 +1,6 @@
 <div *ngIf="model$ | async as model">
   <button
-    [disabled]="model.atBeginning === true"
+    [disabled]="model.loggedIn === false"
     class="btn btn-primary"
     (click)="decrement()"
   >

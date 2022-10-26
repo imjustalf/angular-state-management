@@ -3,6 +3,7 @@ import {
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
+import { selectIsUserLoggedIn } from '../../auth/states';
 import { CounterModel } from '../model';
 import * as fromCounter from './reducers/counter.reducer';
 export const FEATURE_NAME = 'reduxCounter';
@@ -47,10 +48,12 @@ export const selectCountingBy = createSelector(
 export const selectCounterModel = createSelector(
   selectCounterCurrent,
   selectCounterAtInitialState,
-  (current, atBeginning) => {
+  selectIsUserLoggedIn,
+  (current, atBeginning, isLoggedIn) => {
     let model: CounterModel = {
       current,
       atBeginning,
+      loggedIn: isLoggedIn,
     };
     return model;
   },

@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { UserService } from 'src/app/features/auth/services/user.service';
+import { Store } from '@ngrx/store';
+import {
+  selectIsUserLoggedIn,
+  selectLoggedInUserName,
+} from 'src/app/features/auth/states';
+import { AuthEvents } from 'src/app/features/auth/states/actions/auth.actions';
 
 @Component({
   selector: 'app-masthead',
@@ -7,14 +12,16 @@ import { UserService } from 'src/app/features/auth/services/user.service';
   styleUrls: ['./masthead.component.css'],
 })
 export class MastheadComponent {
-  user$ = this.authService.getUser();
-  constructor(private readonly authService: UserService) {}
+  userName$ = this.store.select(selectLoggedInUserName);
+  isLoggedIn$ = this.store.select(selectIsUserLoggedIn);
+
+  constructor(private readonly store: Store) {}
 
   logIn() {
-    this.authService.logIn(); // this
+    this.store.dispatch(AuthEvents.requested());
   }
 
   logOut() {
-    this.authService.logOut();
+    this.store.dispatch(AuthEvents.logoff());
   }
 }
